@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index"
   },
   "repository": {
     "type": "git",
@@ -19,10 +19,9 @@
   "homepage": "https://github.com/maghin0/which-stack#readme",
   "dependencies": {
     "apollo-server": "^2.8.1",
+    "bcryptjs": "^2.4.3",
     "graphql": "^14.4.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.9"
-  },
-  "devDependencies": {
-    "nodemon": "^1.19.1"
   }
 }
