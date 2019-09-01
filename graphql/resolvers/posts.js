@@ -1,7 +1,8 @@
-const { AuthenticationError } = require("apollo-server");
+const { AuthenticationError, UserInputError } = require("apollo-server");
 
 const Post = require("../../models/Post");
 const checkAuth = require("../../utilities/check-auth");
+
 module.exports = {
   Query: {
     async getPosts() {
@@ -36,6 +37,11 @@ module.exports = {
         createdAt: new Date().toISOString()
       });
       const post = await newPost.save();
+
+      context.pubsub.publish("NEW_POST", {
+        newPost: post
+      });
+
       return post;
     },
     async deletePost(_, { postId }, context) {
